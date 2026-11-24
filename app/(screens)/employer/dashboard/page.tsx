@@ -5,11 +5,13 @@ import JobStatus from "@/components/dashboard/employer/JobStatus";
 
 export default function Dashboard() {
   return (
-    <div className="container">
-      <EmployerCompanyHeader />
-      <JobStatus />
-      <HiringAnalytics/>
-      <CandidateStatus />
-    </div>
+    <main className="min-h-screen bg-slate-50/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      <div className="container">
+        <EmployerCompanyHeader />
+        <JobStatus />
+        <HiringAnalytics />
+        <CandidateStatus />
+      </div>
+    </main>
   );
 }

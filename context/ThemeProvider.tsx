@@ -11,43 +11,39 @@ const ThemeContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [theme, setThemeState] = useState<Theme>("light");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     const initialTheme = savedTheme ?? "light";
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setThemeState(initialTheme);
+
     document.documentElement.classList.toggle(
       "dark",
       initialTheme === "dark",
     );
+
+    setIsInitialized(true);
   }, []);
 
   const setTheme = (newTheme: Theme) => {
-    const updateTheme = () => {
-      setThemeState(newTheme);
+    setThemeState(newTheme);
 
-      document.documentElement.classList.toggle(
-        "dark",
-        newTheme === "dark",
-      );
+    document.documentElement.classList.toggle(
+      "dark",
+      newTheme === "dark",
+    );
 
-      localStorage.setItem("theme", newTheme);
-    };
-
-    if (
-      !document.startViewTransition ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      updateTheme();
-      return;
-    }
-
-    document.startViewTransition(updateTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
+  if (!isInitialized) return null;
 
   return (
     <themeContext.Provider

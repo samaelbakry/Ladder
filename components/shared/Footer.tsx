@@ -1,4 +1,5 @@
-import { Briefcase, Globe, Share2, MessageSquare } from "lucide-react";
+import { Globe, MessageSquare, Share2 } from "lucide-react";
+import Logo from "../ui/Logo";
 
 export default function Footer() {
   return (
@@ -7,16 +8,11 @@ export default function Footer() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-900 text-white shadow-sm dark:bg-blue-600">
-                <Briefcase size={15} />
-              </div>
-              <span className="text-base font-bold tracking-tight text-slate-900 dark:text-slate-100">
-                Career Tracker
-              </span>
+             <Logo iconOnly size="sm"/>
             </div>
             <span className="hidden text-slate-300 sm:inline dark:text-slate-700">|</span>
             <p className="max-w-md text-slate-500 dark:text-slate-400">
-              The modern job application workspace for professionals.
+              Climb Higher Connect Better
             </p>
           </div>
 
@@ -41,7 +37,7 @@ export default function Footer() {
 
         <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-6 sm:flex-row dark:border-slate-800/80">
           <p className="text-slate-400 dark:text-slate-500">
-            © {new Date().getFullYear()} Career Tracker Inc. All rights reserved.
+            © {new Date().getFullYear()} Ladder Inc. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">

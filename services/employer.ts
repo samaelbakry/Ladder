@@ -42,6 +42,7 @@ export async function getEmployerJobStats(companyId: string) {
   ).length;
 
   return {
+    jobs,
     totalJobs,
     activeJobs,
     closedJobs,

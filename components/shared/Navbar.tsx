@@ -3,12 +3,13 @@
 import { navLinks } from "@/constants/constants";
 import { useAppSelector } from "@/store/hooks/redux-hooks";
 import { selectedAuthenticated, selectedUser } from "@/store/slices/authSlice";
-import { Briefcase, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import LogoutButton from "../ui/authUI/LogoutButton";
 import Appearance from "./Appearance";
+import Logo from "../ui/Logo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,13 +51,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between">
           <Link href="/" className="group flex shrink-0 items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-blue-600 to-indigo-700 text-white shadow-md shadow-blue-900/10 transition-transform duration-200 group-hover:scale-105">
-              <Briefcase className="h-5 w-5" />
-            </div>
-
-            <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white sm:text-xl">
-              Career Tracker
-            </span>
+          <Logo size="sm"/>
           </Link>
 
           {authenticated && (

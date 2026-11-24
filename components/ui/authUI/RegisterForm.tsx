@@ -272,7 +272,7 @@ export default function RegisterForm({ role = "job_seeker" }: { role: Role }) {
         <Button
           type="submit"
           disabled={form.formState.isSubmitting}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-sm font-medium rounded-xl py-4 flex items-center justify-center shadow-lg shadow-blue-500/20 active:scale-[0.99] transition-all duration-200 cursor-pointer mt-4"
+          className="w-full bg-linear-to-br from-violet-500 via-violet-600 to-indigo-700 ring-1 ring-violet-300/30 text-white text-sm font-medium rounded-xl py-4 flex items-center justify-center shadow-lg shadow-blue-500/20 active:scale-[0.99] transition-all duration-200 cursor-pointer mt-4"
         >
           {form.formState.isSubmitting ? (
             <LoaderCircle className="w-5 h-5 animate-spin text-white" />
@@ -285,7 +285,7 @@ export default function RegisterForm({ role = "job_seeker" }: { role: Role }) {
           <span>Already have an account?&nbsp;</span>
           <Link
             href="/login"
-            className="font-semibold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+            className="font-semibold text-slate-600 hover:text-slate-700 hover:underline transition-colors"
           >
             Log in
           </Link>

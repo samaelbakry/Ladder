@@ -8,18 +8,19 @@ import {
 
 export const getAvatarGradient = (name: string = "C") => {
   const gradients = [
-    "from-indigo-500 to-purple-600 text-white",
-    "from-blue-500 to-cyan-600 text-white",
-    "from-emerald-500 to-teal-600 text-white",
-    "from-rose-500 to-pink-600 text-white",
-    "from-amber-500 to-orange-600 text-white",
+    "from-blue-500 to-indigo-600 text-white",
+    "from-sky-500 to-blue-700 text-white",
+    "from-indigo-500 to-violet-600 text-white",
+    "from-blue-600 to-indigo-800 text-white",
+    "from-cyan-500 to-indigo-600 text-white",
   ];
+
   const charCodeSum = name
     .split("")
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+
   return gradients[charCodeSum % gradients.length];
 };
-
 export const formatSalary = (amount: number) =>
   new Intl.NumberFormat("en-US", {
     style: "currency",

@@ -1,10 +1,10 @@
-# Career Tracker
+# LADDER
 
 A full-featured job marketplace platform that connects job seekers with employers. The platform streamlines the hiring process with job posting, application tracking, and candidate management tools.
 
 ## Overview
 
-Career Tracker is a dual-sided platform serving two distinct user roles:
+Ladder is a dual-sided platform serving two distinct user roles:
 
 - **Job Seekers**: Search for opportunities, apply to positions, track applications, and manage interviews
 - **Employers**: Post job openings, review applications, manage the hiring pipeline, and explore candidates
@@ -62,7 +62,7 @@ Career Tracker is a dual-sided platform serving two distinct user roles:
 ## Project Structure
 
 ```
-careertracker/
+Ladder/
 ├── app/                     # Next.js app router
 │   ├── (auth)/             # Authentication routes
 │   ├── (screens)/          # Protected application routes

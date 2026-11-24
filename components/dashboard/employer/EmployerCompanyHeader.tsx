@@ -3,6 +3,7 @@
 import EmployerCompanySwitcher from "@/components/companies/companiesFeed/EmployerCompanySwitcher";
 import EmployerCompanyHeaderSkeleton from "@/components/skeletons/EmployerCompanyHeaderSkeleton";
 import { useFetch } from "@/hooks/useFetch";
+import { getAvatarGradient } from "@/lib/helpers";
 import { getCompaniesByOwner } from "@/services/companies";
 import { useAppSelector } from "@/store/hooks/redux-hooks";
 import { selectedUser } from "@/store/slices/authSlice";
@@ -22,12 +23,14 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import { useState } from "react";
 
 function getExternalUrl(url: string) {
   return /^https?:\/\//i.test(url) ? url : `https://${url}`;
 }
 
 export default function EmployerCompanyHeader() {
+  const [imageError, setImageError] = useState(false);
   const userId = useAppSelector(selectedUser)?.id;
 
   const selectedCompanyId = useAppSelector(
@@ -114,9 +117,7 @@ export default function EmployerCompanyHeader() {
 
   const companyLocation = company.headquarters || company.location;
 
-  const websiteUrl = company.website
-    ? getExternalUrl(company.website)
-    : null;
+  const websiteUrl = company.website ? getExternalUrl(company.website) : null;
 
   const linkedinUrl = company.linkedin_url
     ? getExternalUrl(company.linkedin_url)
@@ -147,18 +148,24 @@ export default function EmployerCompanyHeader() {
           </div>
 
           <div className="mt-6 flex flex-col gap-5 sm:flex-row sm:items-start">
-            <div className="flex size-[76px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-lg shadow-slate-900/5 sm:size-24 dark:border-slate-700 dark:bg-slate-900">
-              {company.logo_url ? (
+            <div
+              className={`flex size-[76px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border shadow-lg shadow-slate-900/5 sm:size-24 ${
+                company.logo_url && !imageError
+                  ? "border-slate-200/80 bg-white dark:border-slate-700 dark:bg-slate-900"
+                  : `border-transparent bg-linear-to-br ${getAvatarGradient(company.name)}`
+              }`}
+            >
+              {company.logo_url && !imageError ? (
                 <img
                   src={company.logo_url}
                   alt={`${company.name} logo`}
                   className="size-full object-contain p-2.5"
-                  onError={(event) => {
-                    event.currentTarget.style.display = "none";
-                  }}
+                  onError={() => setImageError(true)}
                 />
               ) : (
-                <Building2 className="size-9 text-violet-500 sm:size-11" />
+                <span className="text-3xl font-bold text-white">
+                  {company.name?.charAt(0).toUpperCase() || "C"}
+                </span>
               )}
             </div>
 
